@@ -17,7 +17,10 @@ public class Block : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandle
     [SerializeField]
     private float fitrange;
     private GameObject[] bubbles;
+    private Vector3 posB4Drag;
     private Vector3 prePos;
+    private Vector3 cameraOffset;
+    private Vector3 cameraInitPos;
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
@@ -34,7 +37,7 @@ public class Block : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandle
         else if (IntoBlock())
             inBubble = false;
         else
-            this.transform.position = prePos;
+            this.transform.position = posB4Drag;
         //Debug.Log("drag ended"+"  "+rt.position);
     }
 
@@ -42,13 +45,17 @@ public class Block : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandle
     // Use this for initialization
     void Start () {
         rt = this.GetComponent<RectTransform>();
+        cameraInitPos = Camera.main.transform.position;
         initialSelfPos = rt.position;
         bubbles = GameObject.FindGameObjectsWithTag("Bubble");
+        prePos = this.transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        StayInBubble();
+        cameraOffset = Camera.main.transform.position - cameraInitPos;
+        prePos = this.transform.position;
 	}
 
     bool IntoBubble()
@@ -77,10 +84,10 @@ public class Block : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandle
             
             foreach(Vector3 block in bm.blocksPos)
             {
-                if(Mathf.Abs((this.transform.position - block).magnitude)<=fitrange)
+                if(Mathf.Abs((this.transform.position-cameraOffset - block).magnitude)<=fitrange)
                 {
-                    Debug.Log((this.transform.position - block).magnitude);
-                    this.transform.position = block;
+                    Debug.Log((this.transform.position - cameraOffset - block).magnitude);
+                    this.transform.position = block+cameraOffset;
                     return true;
                 }
             }
@@ -92,6 +99,16 @@ public class Block : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandle
     {
         Debug.Log("begin drag   " + this.transform.position);
         inBubble=false;
-        prePos = this.transform.position;
+        posB4Drag = this.transform.position;
     }
+
+    void StayInBubble()
+    {
+        if(inBubble)
+        {
+            this.transform.position = prePos;
+        }
+    }
+
+
 }
