@@ -17,9 +17,5 @@ public class BlockManager : MonoBehaviour {
         }
         boxes = GameObject.FindGameObjectsWithTag("Box");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }

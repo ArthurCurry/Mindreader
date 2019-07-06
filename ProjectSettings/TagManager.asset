@@ -7,7 +7,7 @@ TagManager:
   - Bubble
   - Block
   - Box
-  - Button
+  - wallPaper
   layers:
   - Default
   - TransparentFX
