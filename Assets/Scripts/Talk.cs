@@ -13,7 +13,7 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
     [SerializeField]
     private GameObject bubble;
     [SerializeField]
-    private TextMesh text;
+    private Text text;
     private int dialogCount;//对话总数
     private int index;//当前对话目录
     private List<string> dialogs=new List<string>();
