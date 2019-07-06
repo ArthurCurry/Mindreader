@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+        StartGame();
 	}
+
+    void StartGame()
+    {
+        this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(0, 0, -10), 0.7f * Time.deltaTime);
+        if (this.transform.position.y <= 0.1f)
+        {
+            this.transform.position = new Vector3(0,0,-10);
+            this.enabled = false;
+        }
+            
+    }
 }
