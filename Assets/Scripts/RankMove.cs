@@ -1,11 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class RankMove : MonoBehaviour {
+public class RankMove : MonoBehaviour,IPointerClickHandler {
 
-	// Use this for initialization
-	void Start () {
+    private GameObject character;
+
+    void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+    {
+        
+    }
+
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	

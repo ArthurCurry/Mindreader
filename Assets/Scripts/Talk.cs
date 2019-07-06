@@ -32,6 +32,10 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
     private int paraIndex;
     [SerializeField]
     private List<GameObject> tags;
+    [SerializeField]
+    private GameObject readButton;
+    private List<XmlNodeList> intersections=new List<XmlNodeList>();
+    private int repeadIndex;//复读段落的目录
 
     private Dictionary<string, GameObject> restartPairs = new Dictionary<string, GameObject>();
 
@@ -107,7 +111,11 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
         //Debug.Log("clicked");
 
         UpdateDialog();
-        AddTags();
+        if(index>=dialogCount)
+        {
+
+        }
+        //AddTags();
     }
 
     void ReadIntersections()
@@ -118,11 +126,17 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
         {
             XmlNodeList dialogs=node.ChildNodes;
             paraLengths.Add(dialogs.Count-1);
-            Debug.Log(dialogs.Count-1);
+            intersections.Add(dialogs);
+            Debug.Log(intersections[intersections.Count-1][0].InnerText);
         }
     }
 
-    void AddTags()
+    void Repeat()
+    {
+        int paraIndex =
+    }
+
+    /*void AddTags()
     {
         int count = index-1;
         for(int i =0;i<paraLength.Count;i++)
@@ -132,5 +146,5 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
                 
             }
         }
-    }
+    }*/
 }
