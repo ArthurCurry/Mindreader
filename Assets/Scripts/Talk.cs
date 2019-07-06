@@ -18,7 +18,7 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
     private int index;//当前对话目录
     private List<string> dialogs=new List<string>();
     private List<string> titles=new List<string>();
-    private List<int> paraLength;
+    private List<int> paraLength;//各段落长度
     [SerializeField]
     private GameObject playerText;
     [SerializeField]
@@ -30,12 +30,18 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
     private List<int> paraLengths=new List<int>();
     private int paralength;
     private int paraIndex;
+    [SerializeField]
+    private List<GameObject> tags;
+
+    private Dictionary<string, GameObject> restartPairs = new Dictionary<string, GameObject>();
+
 
     // Use this for initialization
     void Start () {
         string data = Resources.Load("Dialogues/dialogues").ToString();
         xml.LoadXml(data);
         LoadDialog(characterName);
+        tags = new List<GameObject>();
         canbClicked = true;
 	}
 	
@@ -57,11 +63,12 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
         foreach(XmlNode node in list2)
         {
             titles.Add(node.InnerText);
+            restartPairs.Add(node.InnerText, null);
             //Debug.Log(titles[titles.Count - 1]);
         }
         dialogCount = dialogs.Count;
         index = 0;
-
+        
         ReadIntersections();
     }
 
@@ -71,7 +78,7 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
         {
             string character = dialogs[index].Split('：')[0];
             string sentence = dialogs[index].Split('：')[1];
-            Debug.Log(dialogs[index] + "  " + index);
+            //Debug.Log(dialogs[index] + "  " + index);
             switch (character)
             {
                 case "Q":
@@ -100,6 +107,7 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
         //Debug.Log("clicked");
 
         UpdateDialog();
+        AddTags();
     }
 
     void ReadIntersections()
@@ -116,6 +124,13 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
 
     void AddTags()
     {
-        
+        int count = index-1;
+        for(int i =0;i<paraLength.Count;i++)
+        {
+            if(count==paraLength[i])
+            {
+                
+            }
+        }
     }
 }
