@@ -74,6 +74,7 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
         index = 0;
         
         ReadIntersections();
+        readButton.GetComponent<RankMove>().names = titles;
     }
 
     void UpdateDialog()
@@ -133,7 +134,7 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
 
     void Repeat()
     {
-        int paraIndex =
+        //int paraIndex =
     }
 
     /*void AddTags()
