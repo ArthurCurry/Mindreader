@@ -24,12 +24,14 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
     [SerializeField]
     private GameObject playerBubble;
     XmlDocument xml = new XmlDocument();
+    private bool canbClicked;
 
     // Use this for initialization
     void Start () {
         string data = Resources.Load("Dialogues/dialogues").ToString();
         xml.LoadXml(data);
         LoadDialog(characterName);
+        canbClicked = true;
 	}
 	
 	// Update is called once per frame
@@ -58,12 +60,12 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
 
     void UpdateDialog()
     {
-        if(index<dialogCount)
+        if (index < dialogCount)
         {
             string character = dialogs[index].Split('：')[0];
             string sentence = dialogs[index].Split('：')[1];
             Debug.Log(dialogs[index] + "  " + index);
-            switch(character)
+            switch (character)
             {
                 case "Q":
                     playerBubble.SetActive(true);
@@ -79,11 +81,17 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
             }
             index += 1;
         }
+        else
+        {
+            playerBubble.SetActive(false);
+            bubble.SetActive(false);
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         //Debug.Log("clicked");
+
         UpdateDialog();
     }
 }
