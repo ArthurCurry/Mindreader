@@ -180,7 +180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 555555555555555555555555555555
+  m_Text: 
 --- !u!222 &74419178
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -471,11 +471,11 @@ RectTransform:
   m_Father: {fileID: 275790325}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -94.9}
-  m_SizeDelta: {x: 248.1, y: 162.1}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -19, y: -35}
+  m_SizeDelta: {x: 248.09998, y: 162.1}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &481292035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -839,6 +839,10 @@ Prefab:
         type: 2}
       propertyPath: characterName
       value: "\u80A5\u5B85"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309191033204696, guid: cbe7eb13ff81294499c1fc955a3a70d8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cbe7eb13ff81294499c1fc955a3a70d8, type: 2}
