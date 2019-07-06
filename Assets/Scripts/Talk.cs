@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Xml;
 using System.IO;
 using UnityEngine.EventSystems;
@@ -20,6 +21,8 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
     private List<int> paraLength;
     [SerializeField]
     private GameObject playerText;
+    [SerializeField]
+    private GameObject playerBubble;
     XmlDocument xml = new XmlDocument();
 
     // Use this for initialization
@@ -47,7 +50,7 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
         foreach(XmlNode node in list2)
         {
             titles.Add(node.InnerText);
-            Debug.Log(titles[titles.Count - 1]);
+            //Debug.Log(titles[titles.Count - 1]);
         }
         dialogCount = dialogs.Count;
         index = 0;
@@ -58,11 +61,29 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
         if(index<dialogCount)
         {
             string character = dialogs[index].Split('：')[0];
+            string sentence = dialogs[index].Split('：')[1];
+            Debug.Log(dialogs[index] + "  " + index);
+            switch(character)
+            {
+                case "Q":
+                    playerBubble.SetActive(true);
+                    bubble.SetActive(false);
+                    playerText.GetComponent<Text>().text = sentence;
+                    break;
+                case "A":
+                    playerBubble.SetActive(false);
+                    bubble.SetActive(true);
+                    text.text = sentence;
+                    break;
+
+            }
+            index += 1;
         }
     }
 
-    void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
+        //Debug.Log("clicked");
         UpdateDialog();
     }
 }

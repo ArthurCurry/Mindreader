@@ -12,7 +12,7 @@ public class BlockManager : MonoBehaviour {
         blocks = GameObject.FindGameObjectsWithTag("Block");
         foreach (GameObject block in blocks)
         {
-            Debug.Log(block.transform.position);
+            //Debug.Log(block.transform.position);
             blocksPos.Add(block.transform.position);
         }
         boxes = GameObject.FindGameObjectsWithTag("Box");
