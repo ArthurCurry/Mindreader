@@ -13,8 +13,8 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
     private GameObject bubble;
     [SerializeField]
     private TextMesh text;
-    private int dialogCount;
-    private int index;
+    private int dialogCount;//对话总数
+    private int index;//当前对话目录
     private List<string> dialogs=new List<string>();
     private List<string> titles=new List<string>();
     private List<int> paraLength;
@@ -49,11 +49,16 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
             titles.Add(node.InnerText);
             Debug.Log(titles[titles.Count - 1]);
         }
+        dialogCount = dialogs.Count;
+        index = 0;
     }
 
     void UpdateDialog()
     {
-
+        if(index<dialogCount)
+        {
+            string character = dialogs[index].Split('：')[0];
+        }
     }
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
