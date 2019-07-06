@@ -22,5 +22,8 @@ public class Talk : MonoBehaviour {
 		
 	}
 
+    void LoadDialog(string name)
+    {
 
+    }
 }

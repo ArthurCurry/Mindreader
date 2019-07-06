@@ -814,7 +814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a7fc8065f892f43ab5ef726c8076ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: "\u65C1\u767D"
+  characterName: "\u80A5\u5B85"
 --- !u!1 &2075394798
 GameObject:
   m_ObjectHideFlags: 0
