@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour {
 
-
+    public GameObject anchor;
 	// Update is called once per frame
 	void Update () {
         StartGame();
@@ -17,6 +17,8 @@ public class CameraMove : MonoBehaviour {
         {
             this.transform.position = new Vector3(0,0,-10);
             this.enabled = false;
+            anchor.SetActive(true);
+
         }
             
     }
