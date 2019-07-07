@@ -37,10 +37,31 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
     [SerializeField]
     private GameObject readButton;
     private List<XmlNodeList> intersections=new List<XmlNodeList>();
-    private int repeadIndex;//复读段落的目录
+    private int repeatIndex;//复读段落的目录
+    private int repeatCount;//复读对话总数
+    private Button repeatButton;
+    private string repeatParaName;
+    private List<string> repeatDialog = new List<string>();
 
     private Dictionary<string, GameObject> restartPairs = new Dictionary<string, GameObject>();
 
+    public bool canRepeated;
+
+    public int RepeatIndex
+    {
+        set
+        {
+            repeatIndex = value;
+        }
+    }
+
+    public string ParaName
+    {
+        set
+        {
+            repeatParaName = value;
+        }
+    }
 
     // Use this for initialization
     void Start () {
@@ -53,7 +74,7 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        ShowButton();
 	}
 
     void LoadDialog(string name)
@@ -116,7 +137,7 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
         UpdateDialog();
         if(index>=dialogCount)
         {
-
+            Repeat(repeatParaName);
         }
         //AddTags();
     }
@@ -130,13 +151,43 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
             XmlNodeList dialogs=node.ChildNodes;
             paraLengths.Add(dialogs.Count-1);
             intersections.Add(dialogs);
-            Debug.Log(intersections[intersections.Count-1][0].InnerText);
+            //Debug.Log(intersections[intersections.Count-1][0].InnerText);
         }
     }
 
-    void Repeat()
+    public void Repeat(string paraName)
     {
-        //int paraIndex =
+        //Debug.Log(paraName);
+        
+        if (repeatIndex < repeatCount&&canRepeated)
+        {
+            
+            string character = repeatDialog[repeatIndex].Split('：')[0];
+            string sentence = repeatDialog[repeatIndex].Split('：')[1];
+            Debug.Log(character + "  " + sentence);
+            switch (character)
+            {
+                case "Q":
+                    playerBubble.SetActive(true);
+                    bubble.SetActive(false);
+                    playerText.GetComponent<Text>().text = sentence;
+                    break;
+                case "A":
+                    playerBubble.SetActive(false);
+                    bubble.SetActive(true);
+                    text.text = sentence;
+                    break;
+
+            }
+            repeatIndex += 1;
+        }
+        else
+        {
+            //canRepeated = false;
+            playerBubble.SetActive(false);
+            //repeatIndex = 0;
+            bubble.SetActive(false);
+        }
     }
 
     /*void AddTags()
@@ -150,4 +201,44 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
             }
         }
     }*/
+
+    void ShowButton()
+    {
+        if (index >= dialogCount && (Camera.main.transform.position - this.transform.position).magnitude < 14f)
+        {
+            if (repeatButton == null)
+                repeatButton = readButton.transform.parent.gameObject.GetComponent<Button>();
+            //Debug.Log("button show");
+            readButton.SetActive(true);
+            readButton.transform.parent.gameObject.SetActive(true);
+        }
+        else
+            readButton.transform.parent.gameObject.SetActive(false);
+        
+    }
+
+    public void InitialRepeater()
+    {
+        repeatIndex = 0;
+        canRepeated = true;
+        repeatParaName = readButton.GetComponent<Text>().text;
+        Debug.Log("initialized");
+        int i;
+        if (repeatParaName != null)
+        {
+            i = titles.IndexOf(repeatParaName);
+            //Debug.Log(i);
+        }
+        else
+            i = 0;
+        //
+
+        repeatDialog.Clear();
+        for (int j = 1; j < intersections[i].Count; j++)
+        {
+            repeatDialog.Add(intersections[i][j].InnerText);
+            Debug.Log(intersections[i][j].InnerText);
+        }
+        repeatCount = repeatDialog.Count;
+    }
 }
