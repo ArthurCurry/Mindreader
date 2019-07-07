@@ -40,7 +40,7 @@ public class BlockManager : MonoBehaviour {
         
         if(currentCondition>=condition)
         {
-            confirmPannel.SetActive(true); 
+            confirmPannel.SetActive(true); ;
         }
     }
 
