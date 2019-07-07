@@ -26,6 +26,17 @@ public class Block : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandle
     private Vector3 cameraOffset;
     private Vector3 cameraInitPos;
 
+    [SerializeField]
+    private int blockId;
+
+    public int Block_id
+    {
+        get
+        {
+            return blockId;
+        }
+    }
+
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
         Vector3 pos;
