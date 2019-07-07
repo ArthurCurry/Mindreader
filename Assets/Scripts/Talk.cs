@@ -134,11 +134,10 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
     {
         //Debug.Log("clicked");
 
-        UpdateDialog();
-        if(index>=dialogCount)
-        {
+        //UpdateDialog();
+        
             Repeat(repeatParaName);
-        }
+        
         //AddTags();
     }
 
@@ -204,7 +203,7 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
 
     void ShowButton()
     {
-        if (index >= dialogCount && (Camera.main.transform.position - this.transform.position).magnitude < 14f)
+        if ((Camera.main.transform.position - this.transform.position).magnitude < 14f)
         {
             if (repeatButton == null)
                 repeatButton = readButton.transform.parent.gameObject.GetComponent<Button>();
