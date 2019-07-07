@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMove : MonoBehaviour {
+public class CameraMove : MonoBehaviour
+{
 
-    public GameObject preButton ,nextButton;
+    public GameObject preButton, nextButton, leftButton, rightButton;
     public GameObject anchor;
-    public bool nextDown = false, preDown = false,needToMove = true;
-    private int x=0;
-	// Update is called once per frame
-	void Update () {
+    public bool nextDown = false, preDown = false, needToMove = true;
+    private int x = 0;
+    // Update is called once per frame
+    void Update()
+    {
         if (needToMove)
         {
-           StartGame();
+            StartGame();
         }
-        
-        if (nextDown==true)
+
+        if (nextDown == true)
         {
             Debug.Log("yes");
             NextPage();
@@ -24,7 +26,7 @@ public class CameraMove : MonoBehaviour {
         {
             PrePage();
         }
-	}
+    }
 
 
     void StartGame()
@@ -32,24 +34,27 @@ public class CameraMove : MonoBehaviour {
         this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(0, 0, -10), 2.0f * Time.deltaTime);
         if (this.transform.position.y <= 0.1f)
         {
-            this.transform.position = new Vector3(0,0,-10);
+            this.transform.position = new Vector3(0, 0, -10);
             //this.enabled = false;
             anchor.SetActive(true);
             preButton.SetActive(true);
             nextButton.SetActive(true);
             needToMove = false;
+            leftButton.SetActive(true);
+            rightButton.SetActive(true);
+
 
         }
-            
+
     }
 
     void NextPage()
     {
-       
+
         if (x <= 84)
         {
             this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(x, 0, -10), 3.0f * Time.deltaTime);
-            if (Mathf.Abs(this.transform.position.x-x) <= 0.1f)
+            if (Mathf.Abs(this.transform.position.x - x) <= 0.1f)
             {
                 this.transform.position = new Vector3(x, 0, -10);
                 nextDown = false;
@@ -65,20 +70,20 @@ public class CameraMove : MonoBehaviour {
                 nextDown = false;
             }
         }
-            
+
     }
 
     void PrePage()
     {
-        
-        if (x >=0)
+
+        if (x >= 0)
         {
             this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(x, 0, -10), 3.0f * Time.deltaTime);
             if (Mathf.Abs(this.transform.position.x) <= 0.1f)
             {
                 this.transform.position = new Vector3(x, 0, -10);
                 preDown = false;
-            } 
+            }
         }
         else
         {
