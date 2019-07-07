@@ -32,10 +32,11 @@ public class BlockManager : MonoBehaviour {
 
     public void Judge()
     {
-        foreach(GameObject block in blocks)
+        Debug.Log(currentCondition);
+        foreach (GameObject block in blocks)
         {
             if (block.GetComponent<Block>().matchFound)
-                condition += 1;
+                currentCondition += 1;
         }
         
         if(currentCondition>=condition)

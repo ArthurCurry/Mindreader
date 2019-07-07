@@ -87,7 +87,12 @@ public class Block : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandle
                     Debug.Log((this.transform.position - bubbles[i].transform.position).magnitude);
                     this.transform.position = bubbles[i].transform.position;
                     if (bubbles[i].GetComponent<Bubble>().Bubble_id.Equals(blockId))
+                    {
                         matchFound = true;
+                        Debug.Log("hhh");
+                    }
+                        
+                    
                     else
                         matchFound = false;
                     transform.SetParent(canvas.transform);
