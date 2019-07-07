@@ -26,6 +26,19 @@ public class Block : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandle
     private Vector3 cameraOffset;
     private Vector3 cameraInitPos;
 
+    public bool matchFound;
+
+    [SerializeField]
+    private int blockId;
+
+    public int Block_id
+    {
+        get
+        {
+            return blockId;
+        }
+    }
+
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
         Vector3 pos;
@@ -73,6 +86,10 @@ public class Block : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandle
                 {
                     Debug.Log((this.transform.position - bubbles[i].transform.position).magnitude);
                     this.transform.position = bubbles[i].transform.position;
+                    if (bubbles[i].GetComponent<Bubble>().Bubble_id.Equals(blockId))
+                        matchFound = true;
+                    else
+                        matchFound = false;
                     transform.SetParent(canvas.transform);
                     Debug.Log("fit in");
                     return true;
@@ -114,6 +131,10 @@ public class Block : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandle
         if(inBubble)
         {
             this.transform.position = prePos;
+        }
+        else
+        {
+            matchFound = false;
         }
     }
 
