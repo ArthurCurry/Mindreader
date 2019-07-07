@@ -17,7 +17,7 @@ public class BlockManager : MonoBehaviour {
     private int currentCondition;
     // Use this for initialization
     void Start () {
-        blocks = GameObject.FindGameObjectsWithTag("Block");
+       // blocks = GameObject.FindGameObjectsWithTag("Block");
         bubbles = GameObject.FindGameObjectsWithTag("Bubble");
         foreach (GameObject block in blocks)
         {
@@ -25,7 +25,7 @@ public class BlockManager : MonoBehaviour {
             blocksPos.Add(block.transform.position);
         }
 
-        boxes = GameObject.FindGameObjectsWithTag("Box");
+       // boxes = GameObject.FindGameObjectsWithTag("Box");
 
         
 	}
