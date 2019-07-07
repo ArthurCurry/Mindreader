@@ -212,7 +212,10 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
             readButton.transform.parent.gameObject.SetActive(true);
         }
         else
+        {
+            bubble.SetActive(false);
             readButton.transform.parent.gameObject.SetActive(false);
+        }
         
     }
 
