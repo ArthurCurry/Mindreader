@@ -516,7 +516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &171071011
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1066,6 +1066,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658ed95fd780ea549af9b3b1efee137d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obj: {fileID: 0}
+  Id: 0
 --- !u!65 &244435716
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1543,7 +1545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &382904374
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1600,7 +1602,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 382904376}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 382904378}
+        m_MethodName: leftDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &382904376
@@ -1644,9 +1657,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 382904373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 0e47bd940ee80b24c8a8383b19f9ee63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anchormove: {fileID: 1511451138}
 --- !u!65 &382904379
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2264,7 +2278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &575434617
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4976,7 +4990,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1126175201
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5033,7 +5047,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1126175203}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1126175205}
+        m_MethodName: rightDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1126175203
@@ -5077,9 +5102,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1126175200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be0bfea1c37e73848b5dda5d7a637569, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e47bd940ee80b24c8a8383b19f9ee63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anchormove: {fileID: 1511451138}
 --- !u!65 &1126175206
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5109,7 +5135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1148819181
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5527,6 +5553,7 @@ GameObject:
   - component: {fileID: 1288791801}
   - component: {fileID: 1288791805}
   - component: {fileID: 1288791806}
+  - component: {fileID: 1288791807}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5624,10 +5651,92 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preButton: {fileID: 1785214681}
   nextButton: {fileID: 1383409142}
+  leftButton: {fileID: 382904373}
+  rightButton: {fileID: 1126175200}
   anchor: {fileID: 1511451136}
   nextDown: 0
   preDown: 0
   needToMove: 1
+--- !u!82 &1288791807
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1288791800}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ff24f09ae1db024448c42192f7bbbd07, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1292625045
 GameObject:
   m_ObjectHideFlags: 0
@@ -5923,7 +6032,7 @@ GameObject:
   - component: {fileID: 1322523891}
   m_Layer: 0
   m_Name: wallPaper3
-  m_TagString: wallPaper
+  m_TagString: wallPaper3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5951,6 +6060,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658ed95fd780ea549af9b3b1efee137d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obj: {fileID: 1148819180}
+  Id: 3
 --- !u!212 &1322523893
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6955,7 +7066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1495545018
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7037,7 +7148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1511451137
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7066,7 +7177,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1511451136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e75eb7ae362acd478961cb6d49e7f56, type: 3}
+  m_Script: {fileID: 11500000, guid: 51d78a48cbe449d48844df6b39b50a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1518228045
@@ -7082,7 +7193,7 @@ GameObject:
   - component: {fileID: 1518228046}
   m_Layer: 0
   m_Name: wallPaper5
-  m_TagString: wallPaper
+  m_TagString: wallPaper5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7110,6 +7221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658ed95fd780ea549af9b3b1efee137d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obj: {fileID: 1495545017}
+  Id: 5
 --- !u!212 &1518228048
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8918,7 +9031,7 @@ GameObject:
   - component: {fileID: 2075308465}
   m_Layer: 0
   m_Name: wallPaper2
-  m_TagString: wallPaper
+  m_TagString: wallPaper2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8946,6 +9059,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658ed95fd780ea549af9b3b1efee137d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obj: {fileID: 575434616}
+  Id: 2
 --- !u!212 &2075308467
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9084,7 +9199,7 @@ GameObject:
   - component: {fileID: 2079264180}
   m_Layer: 0
   m_Name: wallPaper4
-  m_TagString: wallPaper
+  m_TagString: wallPaper4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9112,6 +9227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658ed95fd780ea549af9b3b1efee137d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obj: {fileID: 171071010}
+  Id: 4
 --- !u!212 &2079264182
 SpriteRenderer:
   m_ObjectHideFlags: 0

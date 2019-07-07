@@ -8,6 +8,12 @@ TagManager:
   - Block
   - Box
   - wallPaper
+  - leftBotton
+  - rightButton
+  - wallPaper2
+  - wallPaper3
+  - wallPaper4
+  - wallPaper5
   layers:
   - Default
   - TransparentFX
