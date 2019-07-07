@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
 
-    public GameObject preButton, nextButton, leftButton, rightButton;
+    public GameObject preButton, nextButton, leftButton, rightButton,confirmButton;
     public GameObject anchor;
     public bool nextDown = false, preDown = false, needToMove = true;
     private int x = 0;
@@ -42,7 +42,7 @@ public class CameraMove : MonoBehaviour
             needToMove = false;
             leftButton.SetActive(true);
             rightButton.SetActive(true);
-
+            confirmButton.SetActive(true);
 
         }
 

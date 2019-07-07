@@ -19,6 +19,7 @@ public class anchorMove : MonoBehaviour {
 	// Update is called once per frame_
 	void Update () {
 
+
     }
 
     public void LeftMove()
