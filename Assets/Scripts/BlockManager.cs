@@ -9,9 +9,12 @@ public class BlockManager : MonoBehaviour {
     public GameObject[] boxes;
     private GameObject[] bubbles;
 
-    private Dictionary<int, int> blockBubblePairs=new Dictionary<int, int>();
+    [SerializeField]
+    private GameObject confirmPannel;
+    public  Dictionary<int, int> blockBubblePairs=new Dictionary<int, int>();
 
     public int condition;
+    private int currentCondition;
     // Use this for initialization
     void Start () {
         blocks = GameObject.FindGameObjectsWithTag("Block");
@@ -21,9 +24,24 @@ public class BlockManager : MonoBehaviour {
             //Debug.Log(block.transform.position);
             blocksPos.Add(block.transform.position);
         }
+
         boxes = GameObject.FindGameObjectsWithTag("Box");
 
         
 	}
+
+    public void Judge()
+    {
+        foreach(GameObject block in blocks)
+        {
+            if (block.GetComponent<Block>().matchFound)
+                condition += 1;
+        }
+        
+        if(currentCondition>=condition)
+        {
+            confirmPannel.SetActive(true); ;
+        }
+    }
 
 }
