@@ -25,6 +25,8 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
     private GameObject playerBubble;
     XmlDocument xml = new XmlDocument();
     private bool canbClicked;
+    [SerializeField]
+    private int id;
 
     private GameObject restart;
     private List<int> paraLengths=new List<int>();
@@ -57,17 +59,17 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
     void LoadDialog(string name)
     {
         XmlNode self = xml.SelectSingleNode("//"+name);
-        XmlNodeList list1 = self.SelectNodes("//对话");
+        XmlNodeList list1 = self.SelectNodes("//对话"+id);
         foreach(XmlNode node in list1)
         {
             dialogs.Add(node.InnerText);
             //Debug.Log(dialogs[dialogs.Count-1]);
         }
-        XmlNodeList list2 = self.SelectNodes("//标题");
+        XmlNodeList list2 = self.SelectNodes("//标题"+id);
         foreach(XmlNode node in list2)
         {
             titles.Add(node.InnerText);
-            restartPairs.Add(node.InnerText, null);
+            //restartPairs.Add(node.InnerText, null);
             //Debug.Log(titles[titles.Count - 1]);
         }
         dialogCount = dialogs.Count;
@@ -121,7 +123,7 @@ public class Talk : MonoBehaviour,IPointerClickHandler {
 
     void ReadIntersections()
     {
-        XmlNodeList nodeList = xml.SelectNodes("//段落");
+        XmlNodeList nodeList = xml.SelectNodes("//段落" + id);
         //Debug.Log(nodeList.Count);
         foreach(XmlNode node in nodeList)
         {
